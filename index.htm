@@ -1,0 +1,24 @@
+<html ng-app="cryptoCurrencyLiveData">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live Cryptocurrency Data</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="js/index.js"></script>
+</head>
+  <body ng-controller="MainController">
+    <div>{{appName}}</div>
+
+    <div>
+      <div>XRP</div>
+      <ul>
+
+        <li ng-repeat="currency in cryptoData">USD: {{currency.USD}}</li>
+        <li ng-repeat="currency in cryptoData">ETH: {{currency.ETH}}</li>
+        <li ng-repeat="currency in cryptoData">BTC: {{currency.BTC}}</li>
+      </ul>
+    </div>
+
+</div>
+</div>
+  </body>
+</html>
