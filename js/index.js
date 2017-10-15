@@ -4,11 +4,11 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
   $scope.appName = "CrpytoCurrency Values";
 
   $interval(function() {
-    $http.get("https://min-api.cryptocompare.com/data/pricemulti?fsyms=XRP&tsyms=USD,BTC,ETH")
+    $http.get("https://api.coinmarketcap.com/v1/ticker/")
      .then(function(response) {
          var cryptoData = JSON.stringify(response.data);
          $scope.cryptoData = JSON.parse(cryptoData);
-     });         
-      }, 1000);
+     });
+   }, 10000);
 
 }]);

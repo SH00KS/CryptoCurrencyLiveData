@@ -9,12 +9,8 @@
     <div>{{appName}}</div>
 
     <div>
-      <div>XRP</div>
       <ul>
-
-        <li ng-repeat="currency in cryptoData">USD: {{currency.USD}}</li>
-        <li ng-repeat="currency in cryptoData">ETH: {{currency.ETH}}</li>
-        <li ng-repeat="currency in cryptoData">BTC: {{currency.BTC}}</li>
+        <li ng-repeat="currency in cryptoData">{{currency.name}}</li>
       </ul>
     </div>
 
