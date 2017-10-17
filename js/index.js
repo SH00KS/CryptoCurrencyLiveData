@@ -3,20 +3,21 @@ var cryptoCurrencyLiveData = angular.module('cryptoCurrencyLiveData',[]);
 cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interval', function($scope, $http, $interval){
   $scope.appName = "CrpytoCurrency Values";
 
-  $interval(function() {
+  $scope.changeView = function(ticker) {
+    var currency = $scope.cryptoData.find(x => x.symbol === ticker);
+    $scope.currentSelectedCurrency = currency;
+  };
+
+  function loadData(){
     $http.get("https://api.coinmarketcap.com/v1/ticker/?limit=10")
      .then(function(response) {
-         var cryptoData = JSON.stringify(response.data);
-         $scope.cryptoData = JSON.parse(cryptoData);
-         $scope.cryptoName = $scope.cryptoData.name;
+         $scope.cryptoData = response.data;
+       });
+  };
 
-         $scope.changeView = function(ticker) {
-          console.log("changeView called with ", ticker, $scope.cryptoData);
-         var currency = $scope.cryptoData.find(x => x.symbol === ticker);
-         console.log("currency is ", currency);
-          $scope.currentSelectedCurrency = currency;
-
-}
-     });
+  $interval(function() {
+    loadData();
    }, 10000);
+
+   loadData();
 }]);
