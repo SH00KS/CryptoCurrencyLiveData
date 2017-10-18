@@ -9,9 +9,11 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
   };
 
   function loadData(){
-    $http.get("https://api.coinmarketcap.com/v1/ticker/?limit=10")
+    $http.get("https://api.coinmarketcap.com/v1/ticker/")
      .then(function(response) {
          $scope.cryptoData = response.data;
+         $scope.currentSelectedCurrency = response.data[0];
+         console.log($scope.topCoin);
        });
   };
 
