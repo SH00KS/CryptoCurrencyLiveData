@@ -6,6 +6,8 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
   $scope.changeView = function(ticker) {
     var currency = $scope.cryptoData.find(x => x.symbol === ticker);
     $scope.currentSelectedCurrency = currency;
+    percentageChangeIndicators();
+
   };
 
   function loadData(){
@@ -20,8 +22,34 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
      .then(function(response) {
        $scope.topCoin = response.data[0];
        $scope.currentSelectedCurrency = $scope.topCoin;
+       percentageChangeIndicators();
      });
   }
+
+  function percentageChangeIndicators(){
+    if ($scope.currentSelectedCurrency.percent_change_1h > 0) {
+         $scope.oneHourIndicatorClass = "green";
+         $scope.oneHourIndicatorIcon = "asc";
+       } else {
+         $scope.oneHourIndicatorClass = "red";
+         $scope.oneHourIndicatorIcon = "desc";
+     };
+     if ($scope.currentSelectedCurrency.percent_change_24h > 0){
+         $scope.twentyFourHourIndicatorClass = "green";
+         $scope.twentyFourHourIndicatorIcon = "asc";
+       } else {
+         $scope.twentyFourHourIndicatorClass = "red";
+         $scope.twentyFourHourIndicatorIcon = "desc";
+       };
+     if ($scope.currentSelectedCurrency.percent_change_7d > 0){
+         $scope.sevenDayIndicatorClass = "green";
+         $scope.sevenDayIndicatorIcon = "asc";
+     } else {
+        $scope.sevenDayIndicatorClass = "red";
+        $scope.sevenDayIndicatorIcon = "desc";
+     };
+  }
+
 
   $interval(function() {
     loadData();
