@@ -112,12 +112,12 @@
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Currency</span>
               <div class="count" ng-init="currentSelectedCurrency.symbol = topCoin.symbol">{{currentSelectedCurrency.symbol}}</div>
-              <span class="count_bottom"><i class="{{ oneHourIndicatorClass }}"><i class="fa fa-sort-{{ oneHourIndicatorIcon }}"></i>{{currentSelectedCurrency.percent_change_1h}}</i> In the last hour</span>
+              <span class="count_bottom"></span>
             </div>
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-clock-o"></i> USD </span>
               <div class="count">{{currentSelectedCurrency.price_usd}}</div>
-              <span class="count_bottom"><i class="{{ twentyFourHourIndicatorClass }}"><i class="fa fa-sort-{{ twentyFourHourIndicatorIcon }}"></i>{{currentSelectedCurrency.percent_change_24h}}</i> in the last 24hrs</span>
+              <span class="count_bottom"></span>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> BTC</span>
@@ -160,39 +160,32 @@
 
                   <div class="col-md-12 col-sm-12 col-xs-6">
                     <div>
-                      <p>Percent change in the last hour</p>
+                      <p><i class="{{ oneHourIndicatorClass }}"><i class="fa fa-sort-{{ oneHourIndicatorIcon }}"></i>{{currentSelectedCurrency.percent_change_1h}}%</i> In the last hour</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
+                          <div class="progress-bar bg-{{ oneHourIndicatorClass }}" role="progressbar" data-transitiongoal="20"></div>
                         </div>
                       </div>
                     </div>
                     <div>
-                      <p>Percent change in the last 24hrs</p>
+                      <p><i class="{{ twentyFourHourIndicatorClass }}"><i class="fa fa-sort-{{ twentyFourHourIndicatorIcon }}"></i> {{currentSelectedCurrency.percent_change_24h}}%</i> in the last 24hrs</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
+                          <div class="progress-bar bg-{{ twentyFourHourIndicatorClass }}" role="progressbar" data-transitiongoal="60"></div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-12 col-sm-12 col-xs-6">
                     <div>
-                      <p>Percentage change in the last 7 days</p>
+                      <p><i class="{{ sevenDayIndicatorClass }}"><i class="fa fa-sort-{{ sevenDayIndicatorIcon }}"></i> {{currentSelectedCurrency.percent_change_7d}}%</i> in the last week</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
+                          <div class="progress-bar bg-{{ sevenDayIndicatorClass }}" role="progressbar" data-transitiongoal="40"></div>
                         </div>
                       </div>
                     </div>
-                    <div>
-                      <p>Bill boards</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
 
                 </div>
