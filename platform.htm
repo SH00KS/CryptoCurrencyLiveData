@@ -245,7 +245,7 @@
                       <p><i class="{{ oneHourIndicatorClass }}"><i class="fa fa-sort-{{ oneHourIndicatorIcon }}"></i>{{currentSelectedCurrency.percent_change_1h}}%</i> In the last hour</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-{{ oneHourIndicatorClass }}" role="progressbar" data-transitiongoal="20"></div>
+                          <div class="progress-bar bg-{{ oneHourIndicatorClass }}" role="progressbar" data-transitiongoal="100"></div>
                         </div>
                       </div>
                     </div>
@@ -253,7 +253,7 @@
                       <p><i class="{{ twentyFourHourIndicatorClass }}"><i class="fa fa-sort-{{ twentyFourHourIndicatorIcon }}"></i> {{currentSelectedCurrency.percent_change_24h}}%</i> in the last 24hrs</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-{{ twentyFourHourIndicatorClass }}" role="progressbar" data-transitiongoal="60"></div>
+                          <div class="progress-bar bg-{{ twentyFourHourIndicatorClass }}" role="progressbar" data-transitiongoal="100"></div>
                         </div>
                       </div>
                     </div>
@@ -263,7 +263,7 @@
                       <p><i class="{{ sevenDayIndicatorClass }}"><i class="fa fa-sort-{{ sevenDayIndicatorIcon }}"></i> {{currentSelectedCurrency.percent_change_7d}}%</i> in the last week</p>
                       <div class="">
                         <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-{{ sevenDayIndicatorClass }}" role="progressbar" data-transitiongoal="40"></div>
+                          <div class="progress-bar bg-{{ sevenDayIndicatorClass }}" role="progressbar" data-transitiongoal="100"></div>
                         </div>
                       </div>
                     </div>
@@ -374,7 +374,7 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-left">Last updated: {{currentSelectedCurrency.last_updated }}</div>
+          <div class="pull-left">Last updated: {{currentSelectedCurrency.last_updated * 1000 | date:'medium' }}</div>
           <div class="pull-right">
             CryptoCurrencyLiveData by <a href="https://carvill.co">carvill.co</a>
           </div>
