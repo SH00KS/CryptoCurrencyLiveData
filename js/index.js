@@ -54,6 +54,12 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
   function supplyChartFigures(){
     $scope.totalSupply = $scope.currentSelectedCurrency.total_supply;
     $scope.availableSupply = $scope.currentSelectedCurrency.available_supply;
+    console.log("available supply: " + $scope.availableSupply * $scope.totalSupply / 100);
+  }
+
+  function refreshData(){
+    console.log("refreshing");
+    loadData();
   }
 
 

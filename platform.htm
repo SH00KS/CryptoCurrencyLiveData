@@ -28,7 +28,6 @@
     <script src="js/index.js"></script>
 
     <script>
-    var available = totalSupply;
 
     function init_chart_doughnut(){
 
@@ -153,8 +152,8 @@
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa fa-refresh"></i> BTC</span>
+                  <a ng-click="refreshData();" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa fa-refresh"></i> </span>
                   </a>
                 </li>
               </ul>
