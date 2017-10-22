@@ -7,7 +7,7 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
     var currency = $scope.cryptoData.find(x => x.symbol === ticker);
     $scope.currentSelectedCurrency = currency;
     percentageChangeIndicators();
-
+    supplyChartFigures();
   };
 
   function loadData(){
@@ -23,6 +23,7 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
        $scope.topCoin = response.data[0];
        $scope.currentSelectedCurrency = $scope.topCoin;
        percentageChangeIndicators();
+       supplyChartFigures();
      });
   }
 
@@ -48,6 +49,11 @@ cryptoCurrencyLiveData.controller('MainController', ['$scope', '$http', '$interv
         $scope.sevenDayIndicatorClass = "red";
         $scope.sevenDayIndicatorIcon = "desc";
      };
+  }
+
+  function supplyChartFigures(){
+    $scope.totalSupply = $scope.currentSelectedCurrency.total_supply;
+    $scope.availableSupply = $scope.currentSelectedCurrency.available_supply;
   }
 
 

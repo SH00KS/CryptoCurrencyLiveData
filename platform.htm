@@ -27,6 +27,65 @@
 
     <script src="js/index.js"></script>
 
+    <script>
+    var available = totalSupply;
+
+    function init_chart_doughnut(){
+
+  		if( typeof (Chart) === 'undefined'){ return; }
+
+  		console.log('init_chart_doughnut');
+
+
+  		if ($('.canvasDoughnut').length){
+
+      console.log(available);
+
+  		var chart_doughnut_settings = {
+  				type: 'doughnut',
+  				tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+  				data: {
+  					labels: [
+              "Available",
+              "Total",
+
+  					],
+  					datasets: [{
+  						data: [10, 20],
+  						backgroundColor: [
+  							"#BDC3C7",
+  							"#9B59B6",
+  							"#E74C3C",
+  							"#26B99A",
+  							"#3498DB"
+  						],
+  						hoverBackgroundColor: [
+  							"#CFD4D8",
+  							"#B370CF",
+  							"#E95E4F",
+  							"#36CAAB",
+  							"#49A9EA"
+  						]
+  					}]
+  				},
+  				options: {
+  					legend: false,
+  					responsive: false
+  				}
+  			}
+
+  			$('.canvasDoughnut').each(function(){
+
+  				var chart_element = $(this);
+  				var chart_doughnut = new Chart( chart_element, chart_doughnut_settings);
+
+  			});
+
+  		}
+
+  	}
+    </script>
+
     <!-- Custom Theme Style -->
     <link href="css/custom.min.css" rel="stylesheet">
   </head>
@@ -241,15 +300,15 @@
                         <table class="tile_info">
                           <tr>
                             <td>
-                              <p><i class="fa fa-square blue"></i>Available Supply </p>
+                              <p><i class="fa fa-square blue"></i>Available</p>
                             </td>
-                            <td>30%</td>
+                            <td>{{totalSupply}}</td>
                           </tr>
                           <tr>
                             <td>
-                              <p><i class="fa fa-square green"></i>Total Supply </p>
+                              <p><i class="fa fa-square green"></i>Total</p>
                             </td>
-                            <td>10%</td>
+                            <td>{{availableSupply}}</td>
                           </tr>
 
                         </table>
