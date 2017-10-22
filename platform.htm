@@ -169,19 +169,23 @@
           <!-- top tiles -->
           <div class="row tile_count">
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Currency</span>
+              <span class="count_top"> Currency Symbol</span>
               <div class="count" ng-init="currentSelectedCurrency.symbol = topCoin.symbol">{{currentSelectedCurrency.symbol}}</div>
               <span class="count_bottom"></span>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> USD </span>
-              <div class="count">{{currentSelectedCurrency.price_usd}}</div>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"> USD </span>
+              <div class="count">${{currentSelectedCurrency.price_usd}}</div>
               <span class="count_bottom"></span>
             </div>
             <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> BTC</span>
-              <div class="count green">{{currentSelectedCurrency.price_btc}}</div>
+              <span class="count_top"> BTC</span>
+              <div class="count green">Ƀ{{currentSelectedCurrency.price_btc}}</div>
               <span class="count_bottom"><i class="{{ sevenDayIndicatorClass }}"><i class="fa fa-sort-{{ sevenDayIndicatorIcon }}"></i>{{currentSelectedCurrency.percent_change_7d}}</i> in the last week</span>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"> Ranking Position</span>
+              <div class="count green">{{currentSelectedCurrency.rank}}</div>
             </div>
             <!--<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
