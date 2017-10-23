@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cryptoCurrencyLiveData">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CRYPTODATA | </title>
+
+    <!-- Bootstrap -->
+    <link href="js/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="js/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="js/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="js/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="js/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="js/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" rel="stylesheet">
+
+
+  </head>
+
+  <body class="nav-md" ng-controller="MainController">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><span>CryptoBureau</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a href="platform.htm"><i class="fa fa-stack-overflow"></i> Top 10 Coins <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li ng-repeat="currency in cryptoData | limitTo:10" data-ng-bind="currency.name" ng-click="changeView(currency.symbol)"></li>
+                    </ul>
+                  </li>
+                  <li><a href="list.htm"><i class="fa fa-stack-overflow"></i> All Coins </a>
+
+                  </li>
+                  <li class="disabled"><a><i class="fa fa-calculator"></i> Profit Calculator </span><span class="label label-success pull-right">Beta</span></a>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a ng-click="refreshData();" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa fa-refresh"></i> </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+
+
+
+          <br />
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+              <div class="x_title">
+                <h2>All Coins</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                  </li>
+
+                  <li><a class="close-link"><i class="fa fa-close"></i></a>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="x_content">
+
+                <div class="table-responsive">
+                  <table class="table table-striped jambo_table">
+                    <thead>
+                      <tr class="headings">
+
+                        <th class="column-title">Ranking </th>
+                        <th class="column-title">Symbol </th>
+                        <th class="column-title">Name </th>
+                        <th class="column-title">Price (USD) </th>
+                        <th class="column-title">Price (BTC) </th>
+                        <th class="column-title">Change 1HR </th>
+                        <th class="column-title">Change 24HRS </th>
+                        <th class="column-title">Change 1W </th>
+                        <th class="column-title no-link last"><span class="nobr">Market Cap (USD)</span>
+                        </th>
+                        <th class="bulk-actions" colspan="7">
+                          <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr class="even pointer" ng-repeat="currency in cryptoData | limitTo:10" ng-click="changeView(currency.symbol)">
+
+                        <td data-ng-bind="currency.rank" ></td>
+                        <td data-ng-bind="currency.symbol"></td>
+                        <td data-ng-bind="currency.name"></td>
+                        <td data-ng-bind="currency.price_usd"></td>
+                        <td data-ng-bind="currency.price_btc"></td>
+                        <td data-ng-bind="currency.percent_change_1h">John Blank L</td>
+                        <td data-ng-bind="currency.percent_change_24h">Paid</td>
+                        <td data-ng-bind="currency.percent_change_7d" class="a-right a-right ">$7.45</td>
+                        <td data-ng-bind="currency.market_cap_usd" class=" last"><a href="#">View</a>
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-left">Last updated: {{currentSelectedCurrency.last_updated * 1000 | date:'medium' }}</div>
+          <div class="pull-right">
+            CryptoCurrencyLiveData by <a href="https://carvill.co">carvill.co</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="js/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="js/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="js/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="js/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="js/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="js/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="js/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="js/vendors/Flot/jquery.flot.js"></script>
+    <script src="js/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="js/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="js/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="js/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="js/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="js/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="js/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="js/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="js/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="js/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="js/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.js"></script>
+    <script src="js/index.js"></script>
+
+
+  </body>
+</html>
